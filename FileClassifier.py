@@ -13,7 +13,7 @@ class Tidy():
     def __init__(self, path):
         self.suffix_d = {
             '图片': ['.jpg', '.png', '.gif', '.bmp', '.jpeg','.raw','.tif','.ico'],
-            '文档': ['.pdf', '.doc', '.json', '.mobi','.txt'],
+            '文档': ['.pdf', '.doc', '.json', '.mobi','.txt','.docx','.md'],
             '压缩包': ['.7z', '.rar', '.zip','.gz','.tar','.z'],
             '安装包': ['.exe', '.EXE', '.msi'],
             '文献': ['.caj'],
@@ -44,7 +44,10 @@ class Tidy():
                 suffix = os.path.splitext(f)[1]
                 dir_name = self.get_keys(suffix)
                 if dir_name:
-                    shutil.move(self.path+'/'+f, self.path+'/'+dir_name)
+                    try:
+                        shutil.move(self.path+'/'+f, self.path+'/'+dir_name)
+                    except Exception as e:
+                        print(e)
             except PermissionError:
                 print('目标文件访问出错')
 
