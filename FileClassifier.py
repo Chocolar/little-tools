@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+'''
+通过文件后缀进行文件整理分类
+'''
+
 import os
 import shutil
 
